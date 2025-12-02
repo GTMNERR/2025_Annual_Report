@@ -1,0 +1,389 @@
+{
+    "sources": [
+        {
+            "DOI": "10.1073/pnas.1315800111",
+            "URL": "https://pnas.org/doi/full/10.1073/pnas.1315800111",
+            "author": [
+                {
+                    "family": "Cavanaugh",
+                    "given": "Kyle C."
+                },
+                {
+                    "family": "Kellner",
+                    "given": "James R."
+                },
+                {
+                    "family": "Forde",
+                    "given": "Alexander J."
+                },
+                {
+                    "family": "Gruner",
+                    "given": "Daniel S."
+                },
+                {
+                    "family": "Parker",
+                    "given": "John D."
+                },
+                {
+                    "family": "Rodriguez",
+                    "given": "Wilfrid"
+                },
+                {
+                    "family": "Feller",
+                    "given": "Ilka C."
+                }
+            ],
+            "container-title": "Proceedings of the National Academy of Sciences",
+            "id": "cavanaugh2013",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013,
+                        12,
+                        13
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "723-727",
+            "title": "Poleward expansion of mangroves is a threshold response to decreased frequency of extreme cold events",
+            "type": "article-journal",
+            "volume": "111"
+        },
+        {
+            "DOI": "10.1007/s12237-009-9195-3",
+            "URL": "https://link.springer.com/10.1007/s12237-009-9195-3",
+            "author": [
+                {
+                    "family": "Cloern",
+                    "given": "James E."
+                },
+                {
+                    "family": "Jassby",
+                    "given": "Alan D."
+                }
+            ],
+            "container-title": "Estuaries and Coasts",
+            "id": "cloern2010",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2010,
+                        3
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "230-241",
+            "title": "Patterns and Scales of Phytoplankton Variability in EstuarineCoastal Ecosystems",
+            "type": "article-journal",
+            "volume": "33"
+        },
+        {
+            "URL": "https://static1.squarespace.com/static/5f846d5a4adb627cffa90b1d/t/5f91ef7953808d0135bac73d/1603399563278/01-Presentation_Dunnigan%2C+_Utilizing+long-term+data+sets+to+evaluate+storm+impacts+to+the+GTMNERR+estuary_.pdf",
+            "author": [
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "Marcum",
+                    "given": "Pamela"
+                },
+                {
+                    "family": "Dix",
+                    "given": "Nicole"
+                },
+                {
+                    "family": "Tanner",
+                    "given": "J. Silas"
+                }
+            ],
+            "id": "dunnigan2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "Presented at the GTM Research Reserve State of the Reserve Symposium, Ponte Vedra Beach, FL",
+            "title": "Utilizing long-term data sets to evaluate storm impacts to the GTMNERR estuary",
+            "type": ""
+        },
+        {
+            "DOI": "10.3390/jmse8060412",
+            "URL": "https://www.mdpi.com/2077-1312/8/6/412",
+            "author": [
+                {
+                    "family": "Schafer",
+                    "given": "Tracey"
+                },
+                {
+                    "family": "Ward",
+                    "given": "Nicholas"
+                },
+                {
+                    "family": "Julian",
+                    "given": "Paul"
+                },
+                {
+                    "family": "Reddy",
+                    "given": "K. Ramesh"
+                },
+                {
+                    "family": "Osborne",
+                    "given": "Todd Z."
+                }
+            ],
+            "container-title": "Journal of Marine Science and Engineering",
+            "id": "schafer2020",
+            "issue": "6",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020,
+                        6,
+                        5
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "412",
+            "title": "Impacts of Hurricane Disturbance on Water Quality across the Aquatic Continuum of a Blackwater River to Estuary Complex",
+            "type": "article-journal",
+            "volume": "8"
+        },
+        {
+            "DOI": "10.2112/JCOASTRES-D-22-00070.1",
+            "URL": "https://bioone.org/journals/journal-of-coastal-research/volume-39/issue-4/JCOASTRES-D-22-00070.1/The-Impacts-of-a-Restoration-Dredging-Project-and-Storm-Events/10.2112/JCOASTRES-D-22-00070.1.short",
+            "author": [
+                {
+                    "family": "Brown",
+                    "given": "Matthew T."
+                },
+                {
+                    "family": "Dix",
+                    "given": "Nicole"
+                },
+                {
+                    "family": "Osborne",
+                    "given": "Todd Z."
+                },
+                {
+                    "family": "Castle",
+                    "given": "Alicia"
+                },
+                {
+                    "family": "Woodward",
+                    "given": "Westly"
+                },
+                {
+                    "family": "Hartnett",
+                    "given": "Allison"
+                },
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "Tanner",
+                    "given": "Silas"
+                },
+                {
+                    "family": "McGinley",
+                    "given": "Edward"
+                }
+            ],
+            "container-title": "Journal of Coastal Research",
+            "id": "brown2023",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023,
+                        7,
+                        4
+                    ]
+                ]
+            },
+            "page": "722-739",
+            "title": "The impacts of a restoration dredging project and storm events on water quality in a northeast Florida barrier island estuary",
+            "type": "article-journal",
+            "volume": "39"
+        },
+        {
+            "author": [
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "Petrinec",
+                    "given": "Kathryn"
+                },
+                {
+                    "family": "Dix",
+                    "given": "Nicole"
+                }
+            ],
+            "id": "dunnigan2017a",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "Presented at the Southeastern Estuarine Research Society Meeting, Myrtle Beach, SC",
+            "title": "Short-term variability in water quality and weather: The effect of tropical cyclone events in the southeastern United States",
+            "title-short": "Short-term variability in water quality and weather",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "St. Laurent",
+                    "given": "Kari"
+                },
+                {
+                    "family": "Cressman",
+                    "given": "Kimberly"
+                },
+                {
+                    "family": "Bundy",
+                    "given": "Marie"
+                },
+                {
+                    "family": "Porter",
+                    "given": "Dwayne"
+                }
+            ],
+            "id": "dunnigan2017b",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "Presented at the Coastal and Estuarine Research Federation, Providence, RI",
+            "title": "Local-scale impact of coastal storms using established long-term monitoring networks",
+            "type": ""
+        },
+        {
+            "URL": "https://gtmnerr.github.io/2022-swmp-annual-report/",
+            "author": [
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "Petrinec",
+                    "given": "Kathryn"
+                },
+                {
+                    "family": "Tanner",
+                    "given": "J. Silas"
+                },
+                {
+                    "family": "Dix",
+                    "given": "Nicole"
+                }
+            ],
+            "id": "dunnigan2023",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023,
+                        3,
+                        1
+                    ]
+                ]
+            },
+            "title": "Guana Tolomato Matanzas National Estuarine Research Reserve 2022 annual weather and water quality monitoring summary report",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.3390/jmse10050661",
+            "URL": "https://www.mdpi.com/2077-1312/10/5/661",
+            "author": [
+                {
+                    "family": "Schafer",
+                    "given": "Tracey"
+                },
+                {
+                    "family": "Dix",
+                    "given": "Nicole"
+                },
+                {
+                    "family": "Dunnigan",
+                    "given": "Shannon"
+                },
+                {
+                    "family": "Reddy",
+                    "given": "K. Ramesh"
+                },
+                {
+                    "family": "Osborne",
+                    "given": "Todd Z."
+                }
+            ],
+            "container-title": "Journal of Marine Science and Engineering",
+            "id": "schafer2022",
+            "issue": "5",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022,
+                        5,
+                        13
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "661",
+            "title": "Impacts of Hurricanes on Nutrient Export and Ecosystem Metabolism in a Blackwater River Estuary Complex",
+            "type": "article-journal",
+            "volume": "10"
+        },
+        {
+            "author": [
+                {
+                    "family": "Callahan",
+                    "given": "John A"
+                },
+                {
+                    "family": "Leathers",
+                    "given": "Daniel J"
+                },
+                {
+                    "family": "Callahan",
+                    "given": "Christina L"
+                }
+            ],
+            "container-title": "JOURNAL OF APPLIED METEOROLOGY AND CLIMATOLOGY",
+            "id": "callahan2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "language": "en",
+            "title": "Comparison of Extreme Coastal Flooding Events between Tropical and Midlatitude Weather Systems in the Delaware and Chesapeake Bays for 19802019",
+            "type": "article-journal",
+            "volume": "61"
+        }
+    ],
+    "project_biblios": [
+        "text/references.bib"
+    ]
+}
