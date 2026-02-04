@@ -93,7 +93,7 @@ Dissolved oxygen at Pine Island has been uncharacteristically low in the past tw
 #|     - "For the current 2025 year"
 #| layout-ncol: 2
 
-threshold_criteria_plot(pi, param = 'do_mgl', rng = c(2020, 2025), 
+threshold_criteria_plot(pi, param = 'do_mgl', rng = c(2021, 2025), 
                         thresholds = c(2,5),
                         threshold_labs = c('Poor', 'Fair', 'Good'), 
                         monthly_smooth = TRUE, 
