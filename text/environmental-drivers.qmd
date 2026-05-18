@@ -41,7 +41,7 @@ This section includes drivers of environmental patterns such as significant weat
 
 Typically, a Nor’easter is a storm along the East Coast of the United States with predominating winds from the northeast. These storms can last anywhere from a single day (24 hours) to several days or weeks. Callahan, Leathers, and Callahan @callahan2022 found that these events can produce surges just as severe as tropical cyclone events and occur more frequently. These events are often in the news associated with blizzards in the New England area of the US; however, their impacts to Northeast Florida, including higher water levels, heavy prevailing winds, precipitation, and reduced tidal exchange, can be significant.
 
-Using duration of wind directions between 0-100 degrees for greater than 24-hrs at the Pellicer Creek weather station, 13 “Nor’easter” events were identified in 2025 (@tbl-neer). Occasionally, localized wind directions result in values outside of this 0-100 degree window. The longest Nor'easter event occurred October 16th - October 19th, lasting 74.5 hours (@fig-winds-long). This table does not identify wind strength during these events, just the time frames in which winds were originating and prevailing in the 0-100 degree directions (@fig-medianwspd).
+<!-- Using duration of wind directions between 0-100 degrees for greater than 24-hrs at the Pellicer Creek weather station, 13 “Nor’easter” events were identified in 2025 (@tbl-neer). Occasionally, localized wind directions result in values outside of this 0-100 degree window. The longest Nor'easter event occurred October 16th - October 19th, lasting 74.5 hours (@fig-winds-long). This table does not identify wind strength during these events, just the time frames in which winds were originating and prevailing in the 0-100 degree directions (@fig-medianwspd). -->
 
 <!-- Additionally, northeast Florida felt the impacts of an unofficially named winter storm, Finn in January. Strong winds were predicted for the event as well as heavy localized rain. Saint Johns County was considered in an Enhanced Risk area (level 3 of 5) with strong southerly winds and the potential for tornadoes. Local schools were released early and government offices closed early in preparation for the fast moving storm. The Pellicer Creek weather station recorded over 23 mm of rain (@fig-rainfall-3) and had a maximum wind speed of 28.9 mph (@fig-winds-january-2). -->
 
@@ -441,7 +441,7 @@ historical_daily_range(pc, param = 'clevel', target_yr = 2025)
 
 Extreme temperatures, both high and low, have drastic impacts on environmental processes. For black mangroves (*Avicennia germinans*), temperatures under -4°C have been found to reduce mangrove cover [@cavanaugh2013]. Extreme high temperatures are often health risks as they result in many [heat-related illnesses](https://www.weather.gov/safety/heat-illness).
 
-Overall, mean monthly temperatures in January, March, May, June, and November were higher than average (@fig-temp-anomalies), with November having the highest anomalies recorded in that month. February, April, September, and December of this year were cooler than average. . The highest average air temperature ever recorded at the GTMNERR weather station was recorded in June 2024 (@fig-dewpt).
+<!-- Overall, mean monthly temperatures in January, March, May, June, and November were higher than average (@fig-temp-anomalies), with November having the highest anomalies recorded in that month. February, April, September, and December of this year were cooler than average. . The highest average air temperature ever recorded at the GTMNERR weather station was recorded in June 2024 (@fig-dewpt). -->
 
 No freeze events were recorded this year.
 
@@ -580,3 +580,94 @@ MET %>%
   column_spec(1, border_left = T)
 ```
 
+```{r}
+#| label: tbl-low-temp-duration
+#| echo: false
+#| tbl-cap: "Number of occurrences air temperature recorded at the SWMP Pellicer Creek meteorological was less than or equal to 0 degrees C"
+# 
+#Filter all atemp data to <=0
+Freezes<-MET[which(MET$atemp<=0),]
+
+#Create separate date month year columns
+Freezes$Month <- format(Freezes$datetimestamp, "%b")
+Freezes$Day <- format(Freezes$datetimestamp, "%d")
+Freezes$Year <- year(Freezes$datetimestamp)
+Freezes$Month_number <- month(Freezes$datetimestamp)
+Freezes$Month_Year <- format(Freezes$datetimestamp, "%b %Y")
+Freezes$Month_Day_Year <- format(Freezes$datetimestamp, "%b %d %Y")
+
+#Count the number of occurrences where atemp is <=0 in a single year
+Yearly_Freezes <- Freezes %>%
+  group_by(Year) %>%
+  add_count(Year, name = "YearlyCounts") %>% 
+  ungroup() %>%
+  select(datetimestamp, Year, YearlyCounts)
+
+#Count the number of monthly freezes where atemp is <=0 in a single year
+Monthly_Freezes <- Freezes %>%
+  group_by(Month_Year) %>%
+  add_count(Month_Year, name = "MonthlyCounts") %>% 
+  ungroup() %>%
+  select(datetimestamp, Year, MonthlyCounts)  
+
+#Duration of longest freeze
+##Convert to date-time and calculate hours
+Duration <- Freezes %>%
+  mutate(
+    datetime_col = as_datetime(datetimestamp)) %>%
+    group_by(Date = as_date(datetime_col)) %>%
+      summarise(duration_hours = as.numeric(difftime(max(datetime_col), 
+                                                 min(datetime_col), 
+                                                 units = "hours"))) #%>%
+   # mutate(year = year(Date)) %>%
+   # mutate(month = month(Date)) %>%
+   # group_by(year) %>%
+   #   summarise(duration_max = max(duration_hours))
+
+#Count the number of freeze days where atemp is <=0 in a single year
+Number_of_Days <- Freezes %>%
+  group_by(Month_Day_Year) %>%
+  distinct(Month_Day_Year, .keep_all = TRUE) %>%  
+  add_count(Month_Day_Year, name = "DailyCounts") %>% 
+  ungroup() %>%
+  add_count(Year, name = "NumberOfDays") %>% 
+  ungroup() %>%
+  select(datetimestamp, Year, NumberOfDays) 
+    
+##Number of occurrences and datetimestamp where the daily mean of atemp is <=0 
+DailyMeanFreeze <- aggreswmp(MET, by='days', params = 'atemp', FUN='mean') %>%
+  filter(atemp <= 0) %>%
+  add_count(atemp, name = "Number_of_Daily_Means") %>% 
+  ungroup()
+  
+DailyMeanFreeze$Year <- year(DailyMeanFreeze$datetimestamp)
+
+DailyMeanFreeze$Date_of_Daily_Mean <- (DailyMeanFreeze$datetimestamp)
+
+#Join table information
+Freeze_Table <- Yearly_Freezes %>%
+  full_join(Monthly_Freezes) %>%
+  full_join(Number_of_Days) %>%
+  full_join(DailyMeanFreeze) 
+
+#Extract only the information needed for final table and print final table in report
+Filtered_Table <- Freeze_Table %>% 
+  arrange(Year, Number_of_Daily_Means) %>%     
+  distinct(Year, .keep_all = TRUE)  %>% 
+  select(Year, YearlyCounts, NumberOfDays, Number_of_Daily_Means, Date_of_Daily_Mean) %>% 
+  rename(`Number of Occurrences` = YearlyCounts,
+         `Number of Days` = NumberOfDays,
+         `Number of Occurrences Daily Mean` = Number_of_Daily_Means,
+         `Date of Daily Mean` = Date_of_Daily_Mean)
+
+#If you don't want the table to print NAs
+  # Filtered_Table <- sapply(Filtered_Table, as.character)
+  # Filtered_Table[is.na(Filtered_Table)] <- ""
+  # Filtered_Table <- as.data.frame(Filtered_Table)  
+
+ print(kbl(Filtered_Table, align = "c") %>%
+  kable_styling(fixed_thead = T, font_size = 12, bootstrap_options = "striped") %>%
+  row_spec(0, font_size = 12),
+  column_spec(2:5,7, border_left = T)
+  )
+```

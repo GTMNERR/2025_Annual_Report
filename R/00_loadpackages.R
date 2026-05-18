@@ -12,6 +12,7 @@ library(tidyverse) # because...tidyverse (ggplot2, tidyr, dplyr)
 library(lubridate) # dates and times
 library(weathermetrics) # functions to convert between weather metrics
 library(cimir) # to convert wind direction degrees to cardinal directions/compass
+library(heatwaveR) # for table with atemp <= to zero
 
 # 03 pulling information and statistics ----
 # library(broom) # convert statistical analysis objects into tidy tibbles
