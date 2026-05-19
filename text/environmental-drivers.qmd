@@ -557,10 +557,10 @@ ggplotly(
 <!-- ) -->
 <!-- ``` -->
 
-```{r} 
- #| label: tbl-low-temp-duration
- #| echo: false
- #| tbl-cap: "Date and duration of temperatures less than or equal to 0 degrees C for greater than 2 hours at the Pellicer Creek weather station."
+```{r}
+#| label: tbl-low-temp-duration
+#| echo: false
+#| tbl-cap: "Date and duration of air temperatures less than or equal to 0 degrees C for greater than 2 hours at Pellicer Creek weather station."
 
  MET %>%
   filter(between(datetimestamp,as.POSIXct("2025-01-01 00:00"), 
