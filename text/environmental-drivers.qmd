@@ -50,7 +50,7 @@ Typically, a Nor’easter is a storm along the East Coast of the United States w
 ```{r}
 #| label: tbl-hurricanes
 #| echo: false
-#| tbl-cap: "Extreme storms that affected the GTMNERR from September 2002-June 2025. Asterisks (*) represent storms listed in NOAA’s Historic Hurricane Tracker as coming within 60 kilometers of the GTMNERR. Cardinal directions for wind were converted using a 16-point meteorological compass found at https://planetcalc.com/3590/. H = Hurricane, TS = Tropical Storm."
+#| tbl-cap: "Extreme storms that affected the GTMNERR from September 2002-December 2025. Asterisks (*) represent storms listed in NOAA’s Historic Hurricane Tracker as coming within 60 kilometers of the GTMNERR. Cardinal directions for wind were converted using a 16-point meteorological compass found at https://planetcalc.com/3590/. H = Hurricane, TS = Tropical Storm."
 
 storms <- readxl::read_xlsx(here::here('data', 
                                       'storms_table_for_Quarterly_Report.xlsx'),
@@ -410,7 +410,6 @@ Predicted King Tide events in 2025 are:
 -   January 11th-14th
 -   December 3rd-7th
 
-
 <!-- The effects of the King Tides on daily average water depths were not observable in January, but there was a spike in water depths at all stations in February (@fig-range-depth).-->
 
 ### Water Depth
@@ -443,12 +442,12 @@ Extreme temperatures, both high and low, have drastic impacts on environmental p
 
 <!-- Overall, mean monthly temperatures in January, March, May, June, and November were higher than average (@fig-temp-anomalies), with November having the highest anomalies recorded in that month. February, April, September, and December of this year were cooler than average. . The highest average air temperature ever recorded at the GTMNERR weather station was recorded in June 2024 (@fig-dewpt). -->
 
-No freeze events were recorded this year.
+There no freeze events in 2025 that recorded air temperature readings at or below -4°C.
 
 ```{r}
 #| label: fig-temp-anomalies
 #| echo: false
-#| fig.cap: Monthly temperature anomalies at GTMNERR Pellicer Creek weather station from 2002-2025
+#| fig.cap: Monthly temperature anomalies at GTMNERR Pellicer Creek weather station from 2002-2026
 
 refmean <-   MET %>% 
  aggreswmp(by = "days", params = c('atemp')) %>% # daily averages
@@ -485,103 +484,127 @@ ggplotly(
 )
 ```
 
-```{r}
-#| label: fig-dewpt
-#| echo: false
-#| fig.cap: Comparison of average dew point and air temperature with total monthly precipitation for the month of June. This year is indicated in red.
+<!-- ```{r} -->
+<!-- #| label: fig-dewpt -->
+<!-- #| echo: false -->
+<!-- #| fig.cap: Comparison of average dew point and air temperature with total monthly precipitation for the month of June. This year is indicated in red. -->
 
 
-fun_in <- function(x) sum(x, na.rm = TRUE)
+<!-- fun_in <- function(x) sum(x, na.rm = TRUE) -->
 
-gtm_prcp <- SWMPr::aggreswmp(MET, FUN = fun_in, by = "months", params = c('totprcp')) %>%
-  mutate(prcp_in = totprcp * 0.0393701)
+<!-- gtm_prcp <- SWMPr::aggreswmp(MET, FUN = fun_in, by = "months", params = c('totprcp')) %>% -->
+<!--   mutate(prcp_in = totprcp * 0.0393701) -->
 
-MET %>%
-  SWMPr::aggreswmp(by = "months") %>%
-  select(datetimestamp, atemp, rh) %>%
-  mutate(dew_pt = weathermetrics::humidity.to.dewpoint(rh = rh, t = atemp, temperature.metric = "celsius"),
-         dew_pt_f = weathermetrics::celsius.to.fahrenheit(dew_pt),
-         atemp_f = weathermetrics::celsius.to.fahrenheit(atemp)) %>%
-  # mutate(dew_pt = atemp - ((100-rh)/5.),
-  #        dew_pt_f = ((dew_pt*9/5) + 32),
-  #        atemp_f = ((atemp * 9/5) + 32)) %>%
-  # select(datetimestamp, dew_pt_f, atemp_f) %>%
-  dplyr::left_join(gtm_prcp, by = "datetimestamp") %>%
-  # select(-totprcp) %>%
-  mutate(year = lubridate::year(datetimestamp),
-         month = lubridate::month(datetimestamp, label = TRUE)) %>%
-  filter(month %in% c("Jun"))  %>%
-  filter(totprcp > 0) %>%
-    ggplot(aes(x = atemp, y = dew_pt)) +
-    geom_point(aes(size = totprcp, color = year >= 2025), alpha = 0.5) +
-    scale_size(range = c(1, 24), name="Total Precipitation (mm)") +
-    geom_text(aes(label = year), size = 2) +
-    facet_wrap(~month, ncol = 1) +
-    scale_color_manual(values = c("gray", "red")) +
-    theme_classic() +
-    theme(axis.text = element_text(size = 12, color = "black"),
-          axis.title = element_text(size = 12, color = "black")) +
-    labs(x = "Average Air Temperature (\u00b0C)",
-         y = "Average Dew Point (\u00b0C)") +
-    guides(color = "none")
+<!-- MET %>% -->
+<!--   SWMPr::aggreswmp(by = "months") %>% -->
+<!--   select(datetimestamp, atemp, rh) %>% -->
+<!--   mutate(dew_pt = weathermetrics::humidity.to.dewpoint(rh = rh, t = atemp, temperature.metric = "celsius"), -->
+<!--          dew_pt_f = weathermetrics::celsius.to.fahrenheit(dew_pt), -->
+<!--          atemp_f = weathermetrics::celsius.to.fahrenheit(atemp)) %>% -->
+<!--   # mutate(dew_pt = atemp - ((100-rh)/5.), -->
+<!--   #        dew_pt_f = ((dew_pt*9/5) + 32), -->
+<!--   #        atemp_f = ((atemp * 9/5) + 32)) %>% -->
+<!--   # select(datetimestamp, dew_pt_f, atemp_f) %>% -->
+<!--   dplyr::left_join(gtm_prcp, by = "datetimestamp") %>% -->
+<!--   # select(-totprcp) %>% -->
+<!--   mutate(year = lubridate::year(datetimestamp), -->
+<!--          month = lubridate::month(datetimestamp, label = TRUE)) %>% -->
+<!--   filter(month %in% c("Jun"))  %>% -->
+<!--   filter(totprcp > 0) %>% -->
+<!--     ggplot(aes(x = atemp, y = dew_pt)) + -->
+<!--     geom_point(aes(size = totprcp, color = year >= 2025), alpha = 0.5) + -->
+<!--     scale_size(range = c(1, 24), name="Total Precipitation (mm)") + -->
+<!--     geom_text(aes(label = year), size = 2) + -->
+<!--     facet_wrap(~month, ncol = 1) + -->
+<!--     scale_color_manual(values = c("gray", "red")) + -->
+<!--     theme_classic() + -->
+<!--     theme(axis.text = element_text(size = 12, color = "black"), -->
+<!--           axis.title = element_text(size = 12, color = "black")) + -->
+<!--     labs(x = "Average Air Temperature (\u00b0C)", -->
+<!--          y = "Average Dew Point (\u00b0C)") + -->
+<!--     guides(color = "none") -->
 
-rm(fun_in, gtm_prcp)
-```
+<!-- rm(fun_in, gtm_prcp) -->
+<!-- ``` -->
 
-```{r}
-#| label: fig-heatindex
-#| echo: false
-#| fig-cap: Hourly averaged heat index values recorded at the Pellicer Creek weather station in 2025 with values in excess of 113 degrees colored in red.
+<!-- ```{r} -->
+<!-- #| label: fig-heatindex -->
+<!-- #| echo: false -->
+<!-- #| fig-cap: Hourly averaged heat index values recorded at the Pellicer Creek weather station in 2025 with values in excess of 113 degrees colored in red. -->
 
-# Convert to 'heat index' from raw temperature. https://www.wpc.ncep.noaa.gov/html/heatindex_equation.shtml
+<!-- # Convert to 'heat index' from raw temperature. https://www.wpc.ncep.noaa.gov/html/heatindex_equation.shtml -->
 
-ggplotly(
-MET %>%
-  filter(datetimestamp >= as.POSIXct("2025-01-01 00:00")) %>%
-  aggreswmp(by = "hours") %>%
-  select(datetimestamp, atemp, rh) %>%
-  mutate(heat_index = weathermetrics::heat.index(t = atemp, rh = rh, temperature.metric = "celsius",
-                                                 output.metric = "fahrenheit"),
-         atemp_f = weathermetrics::celsius.to.fahrenheit(atemp)) %>%
-  drop_na() %>%
-  ggplot(aes(x = datetimestamp, y = heat_index)) +
-    geom_hline(yintercept = 113, linetype = "dashed", color = "gray") +
-    geom_point(aes(color = heat_index > 113)) +
-    scale_x_datetime(breaks = "months", date_labels = "%b") +
-    scale_color_manual(values = c("black", "tomato")) +
-    theme_classic() +
-    theme(axis.text = element_text(size = 12, color = "black"),
-          axis.title = element_text(size = 12, color = "black"),
-          legend.position = "none") +
-    labs(x = "",
-         y = "Hourly Averaged Heat Index (\u00b0F)")
-)
-```
+<!-- ggplotly( -->
+<!-- MET %>% -->
+<!--   filter(datetimestamp >= as.POSIXct("2025-01-01 00:00")) %>% -->
+<!--   aggreswmp(by = "hours") %>% -->
+<!--   select(datetimestamp, atemp, rh) %>% -->
+<!--   mutate(heat_index = weathermetrics::heat.index(t = atemp, rh = rh, temperature.metric = "celsius", -->
+<!--                                                  output.metric = "fahrenheit"), -->
+<!--          atemp_f = weathermetrics::celsius.to.fahrenheit(atemp)) %>% -->
+<!--   drop_na() %>% -->
+<!--   ggplot(aes(x = datetimestamp, y = heat_index)) + -->
+<!--     geom_hline(yintercept = 113, linetype = "dashed", color = "gray") + -->
+<!--     geom_point(aes(color = heat_index > 113)) + -->
+<!--     scale_x_datetime(breaks = "months", date_labels = "%b") + -->
+<!--     scale_color_manual(values = c("black", "tomato")) + -->
+<!--     theme_classic() + -->
+<!--     theme(axis.text = element_text(size = 12, color = "black"), -->
+<!--           axis.title = element_text(size = 12, color = "black"), -->
+<!--           legend.position = "none") + -->
+<!--     labs(x = "", -->
+<!--          y = "Hourly Averaged Heat Index (\u00b0F)") -->
+<!-- ) -->
+<!-- ``` -->
 
-```{r}
-#| label: tbl-high-temp-duration
-#| echo: false
-#| tbl-cap: "Date and duration of temperatures over 90 degrees fahrenheit for greater than 2 hours at the Pellicer Creek weather station"
-# 
-MET %>%
-  filter(datetimestamp >= as.POSIXct("2025-01-01 00:00")) %>%
-  setstep() %>%
-  threshold_identification(param = c('atemp'),
-                           parameter_threshold = c(32.2),
-                           threshold_type = c('>='),
-                           time_threshold = 2) %>%
-  mutate(date = as.Date(starttime)) %>%
-  group_by(date) %>%
-  summarize(sum = sum(duration)) %>%
-  rename(Date = date,
-         `Duration (hrs)` = sum) %>%
+```{r} 
+ #| label: tbl-low-temp-duration
+ #| echo: false
+ #| tbl-cap: "Date and duration of temperatures less than or equal to 0 degrees C for greater than 2 hours at the Pellicer Creek weather station."
+
+ MET %>%
+  filter(between(datetimestamp,as.POSIXct("2025-01-01 00:00"), 
+                 as.POSIXct("2025-12-31 23:45:00"))) %>%
+   setstep() %>%
+   threshold_identification(param = c('atemp'),
+                          parameter_threshold = c(0.0),
+                            threshold_type = c('<='),
+                            time_threshold = 2) %>%
+   mutate(date = as.Date(starttime)) %>%
+   group_by(date) %>%
+   summarize(sum = sum(duration)) %>%
+   rename(Date = date,
+          `Duration (hrs)` = sum) %>%
   kbl(align = "c") %>%
-  kable_styling(fixed_thead = T) %>%
-  column_spec(1, border_left = T)
-```
+   kable_styling(fixed_thead = T) %>%
+   column_spec(1, border_left = T)
+``` 
+
+<!-- # ```{r} -->
+<!-- #| label: tbl-freezing-temp -->
+<!-- #| echo: false -->
+<!-- #| tbl-cap: "Air temperature readings recorded at the SWMP Pellicer Creek meteorological in 2025 that are less than or equal to 0 degrees C." -->
+<!-- #  -->
+<!-- #Filter all atemp data to <=0 -->
+<!-- # Freezes<-MET[which(MET$atemp<=0),] -->
+<!-- #  -->
+<!-- # Freeze_Timestamps <- Freezes %>% -->
+<!-- #   filter(atemp <= -4.0) %>% -->
+<!-- #   filter(between(datetimestamp,as.POSIXct("2025-01-01 00:00"),  -->
+<!-- #                  as.POSIXct("2025-12-31 23:45:00"))) %>% -->
+<!-- #   mutate(mdy_date = format(datetimestamp, "%m/%d/%Y %H:%M")) %>% -->
+<!-- #     select(mdy_date, atemp) %>% -->
+<!-- #   rename(`Date` = mdy_date, -->
+<!-- #          `Air Temperature` = atemp) -->
+
+<!-- # kbl(Freeze_Timestamps, align = "c") %>% -->
+<!-- #   kable_styling(fixed_thead = T, font_size = 12, bootstrap_options = "striped") %>% -->
+<!-- #   row_spec(0, font_size = 12) -->
+<!-- #``` -->
+
 
 ```{r}
-#| label: tbl-low-temp-duration
+#| label: tbl-low-temp-occurrences
 #| echo: false
 #| tbl-cap: "Number of occurrences air temperature recorded at the SWMP Pellicer Creek meteorological was less than or equal to 0 degrees C"
 # 
@@ -654,8 +677,9 @@ Freeze_Table <- Yearly_Freezes %>%
 Filtered_Table <- Freeze_Table %>% 
   arrange(Year, Number_of_Daily_Means) %>%     
   distinct(Year, .keep_all = TRUE)  %>% 
-  select(Year, YearlyCounts, NumberOfDays, Number_of_Daily_Means, Date_of_Daily_Mean) %>% 
-  rename(`Number of Occurrences` = YearlyCounts,
+    mutate(mdy_date = format(Date_of_Daily_Mean, "%m/%d/%Y %H:%M")) %>%
+    select(Year, YearlyCounts, NumberOfDays, Number_of_Daily_Means, Date_of_Daily_Mean) %>% 
+    rename(`Number of Occurrences` = YearlyCounts,
          `Number of Days` = NumberOfDays,
          `Number of Occurrences Daily Mean` = Number_of_Daily_Means,
          `Date of Daily Mean` = Date_of_Daily_Mean)
@@ -665,9 +689,8 @@ Filtered_Table <- Freeze_Table %>%
   # Filtered_Table[is.na(Filtered_Table)] <- ""
   # Filtered_Table <- as.data.frame(Filtered_Table)  
 
- print(kbl(Filtered_Table, align = "c") %>%
+ kbl(Filtered_Table, align = "c") %>%
   kable_styling(fixed_thead = T, font_size = 12, bootstrap_options = "striped") %>%
-  row_spec(0, font_size = 12),
+  row_spec(0, font_size = 12) %>%
   column_spec(2:5,7, border_left = T)
-  )
 ```

@@ -25,6 +25,10 @@ load(here('output','data', 'fm_wq.Rdata'))
 load(here('output','data', 'pc_wq.Rdata'))
 ```
 
+
+
+
+
 The following includes variables that establish the estuarine setting: rainfall, light intensity, water temperature, and salinity. These variables are driven primarily by climatic patterns and largely influence water quality, biological processes, and habitat condition.
 
 Low precipitation levels in November and December lead to drought conditions at the end of 2025 and into 2026. NOAA and NIDIS report these events on their [website](https://www.drought.gov) and [here](https://www.drought.gov/location/32086,%20Saint%20Augustine,%20FL,%20USA) for local St. Augustine drought conditions. 
@@ -46,6 +50,10 @@ Low precipitation levels in November and December lead to drought conditions at 
 ## Data
 
 ### Rainfall
+
+
+
+
 
 ```{r}
 #| label: fig-rainfall
@@ -316,9 +324,17 @@ boxplot_prcp <- ggplot(data = Monthly_PRCP,
 
 ```
 
+
+
+
+
 ### Light Intensity
 
 The plot below is interactive. Clicking on elements in the legend (months) will select or deselect months of interest. Additionally, the axis can be adjusted by selecting portions of the plot to isolate.
+
+
+
+
 
 ```{r}
 #| label: fig-lightintensity
@@ -351,9 +367,17 @@ MET %>%
 )
 ```
 
+
+
+
+
 ### Temperature
 
 Air and water temperatures are presented as daily averages (blue line) with historic ranges (daily range and average daily range) provided in shades of gray. 
+
+
+
+
 
 ```{r}
 #| label: fig-range-atemp
@@ -384,7 +408,15 @@ historical_daily_range(fm, param = 'temp', target_yr = 2025) + labs(x = "", y = 
 historical_daily_range(pc, param = 'temp', target_yr = 2025) + labs(x = "", y = "Water Temperature (\u00B0C)")
 ```
 
+
+
+
+
 ### Salinity
+
+
+
+
 
 ```{r}
 #| label: fig-range-sal
@@ -405,5 +437,4 @@ historical_daily_range(fm, param = 'sal', target_yr = 2025)
 
 historical_daily_range(pc, param = 'sal', target_yr = 2025)
 ```
-
 
