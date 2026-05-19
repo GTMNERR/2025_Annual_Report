@@ -16,6 +16,8 @@ Two sonde failures and multiple sensor failures (2 Wiped conductivity/ temperatu
 
 Additionally, four data sondes (Matthew, Irma, Pelican, and Triton) experienced a voltage increase during some of their deployments. This may be an indication that the sonde’s internal RTC battery, aka coin cell, is not functioning properly since both Pelican and Triton later in Q2 experienced complete data sonde failures.  
 
+There was a data sonde battery failure at Fort Matanzas in July most likely attributed to a central wiper malfunction and a completed data sonde failure at Pellicer Creek in August resulting from a possible lightning strike.
+
 ### Sonde and Sensor Malfunctions
 
 #### Wiper Brush Issues
@@ -24,16 +26,21 @@ The wiper brush fell off on the following deployments:
 
 Pine Island:
 
--   March 4 - March 26, 2025 (Irma SN: 20H100465) central wiper SN: 23G100412
+-   February 26 - March 26, 2025 (Irma SN: 20H100465) central wiper SN: 23G100412
 -   June 10 - June 26, 2025 (Megalops SN: 16J102351) central wiper SN: 22A106852
+-   October 23 - November 5, 2025 (Matthew SN: 20H100464) central wiper SN: 12L101282
+
+San Sebastian:
+
+-   October 23 - November 5, 2025 (Dorian SN: 20H100466) central wiper SN: 24H101015
 
 Pellicer Creek:
 
 -   February 26 - March 26, 2025 (Triton SN: 13K102679) central wiper SN: 16J100200
 
-#### Depth Dropouts
+#### Depth Issues
 
-No depth dropouts during this reporting period.
+The end of the ram rod broke off inside the sonde tube during the sonde exchange on October 7, 2025 at Fort Matanzas. The metal end of the ram rod could not be retrieved and is stuck inside resting on pin. The Sonde is positioned approximately 3 inches higher than normal for data collected between October 7, 2025 10:15 through May 1, 2026, 12:00. Depth data does not appear to be influenced by the small change in depth.
 
 #### Broken Data Files
 
@@ -44,6 +51,7 @@ The following is a list of deployments that experienced broken data files and al
 -   Pelican (SN: 15E101699) 04/09/2025 10:15 -- 04/15/2025 13:15, DO sensor failure
 -   Triton (SN: 13K102679) 06/06/2025 11:45 -- 06/16/2025 13:00, CT sensor failure 
 -   Triton (SN: 13K102679) 06/24/2025 09:45 -- 06/27/2025 11:30, DO sensor malfunction
+-   Triton (SN: 13K102679) 07/09/2025 11:45 -- 07/23/2025 09:30, CT sensor failure and warning that port 4 was drawing too much power
 
 #### Wiped Conductivity and Temperature Sensor Issues
 
@@ -51,7 +59,7 @@ The wiped C/T sensor (SN: 20D101823) in Flounder at Pine Island had a pin corrod
 
 The same pin corrosion occurred on the wiped C/T sensor (SN: 24H100098) at Fort Matanzas on Marlin (SN: 13E101372) from January 1, 2025 00:00 - January 14, 2025 11:00.
 
-Additionally, the wiped C/T sensor (SN: 20G104544) installed on Triton (SN: 13K102679) failed during the June 6, 2025 11:45 - June 16, 2025 13:00 deployment at Pellicer Creek. Triton was evaluated and redeployed on June 24, 2025 but experienced issues with the dissolved oxygen sensor.
+Additionally, the wiped C/T sensor (SN: 20G104544) installed on Triton (SN: 13K102679) failed during the June 6, 2025 11:45 - June 16, 2025 13:00 deployment at Pellicer Creek. Triton was evaluated and redeployed on June 24, 2025 but experienced issues with the dissolved oxygen sensor and a wiped C/T sensor failure again during the July 9, 2025 deployment. This sensor failure resulted in a data sonde warning "port 4 drawing too much power" and the data was split into two files.
 
 #### Chlorophyll Sensor Issues
 
@@ -61,17 +69,32 @@ On May 29, 2025, Pelican (SN: 15E101699) stopped working at Pellicer Creek. Staf
 
 Pine Island experienced two dissolved oxygen sensor failures, the first, dissolved oxygen sensor (SN: 15C105033) deployed on Matthew (SN: 20H100464), failed during the February 11 - March 4, 2025 deployment; and the second, sensor (SN: 13E100915) deployed on Megalops (SN: 16J102351), failed during the June 10 - June 26, 2025 deployment. The dissolved oxygen sensors old and most likely reached life expectancy. 
 
+Pellicer Creek also experienced two dissolved oxygen sensor malfunctions on April 11, 2025 - April 15, 2025 and June 26, 2025 - June 27, 2025. The cause of the sensor malfunctions is unknown.
+
 #### Telemetry Issues
 Research staff received low battery notifications from the telemetry station in March, 2025. On March 24, 2025 staff replaced the battery. On March 26, 2025 live telemetered data stopped reporting on the CDMO website. The station was reset station on April 1, 2025 which rectified the issue. 
+
+### Software Issues
+There was a KOR software malfunction during post deployment checks for the September 8, 2025 deployment. The program froze and research staff could not proceed. Software was reinstalled and the problem was resolved.
 
 ### Leveling
 
 The GTM research staff completed the annual task of measuring the elevation of the sonde in Pellicer Creek on March 27 - 28, 2025. The team measured the change in height from a reference benchmark and three positions on the piling holding the sonde. The orthometric height of the sonde tube pin position is used as the station offset when calibrating the depth sensor for the sonde. The orthometric heights of the positions can also be used to determine if the piling holding the sonde is moving vertically.  
 
+
+
 ## Weather Station
 
-### Sensor Malfunctions
+### Program Updates
 
-A new MET program that was uploaded to the station on November 13, 2024. This program had an incorrect switch closure for the rain gauge. The station did not record rainfall data beginning on November 13, 2025 12:30 and extending through January 28, 2025.
+A new MET program that was uploaded to the station on November 13, 2024. This program had an incorrect switch closure for the rain gauge. The station did not record rainfall data beginning on November 13, 2025 12:30 and extending through January 28, 2025. Another program update was made on January 28, 2025 to correct the incorrect switch closure for the precipitation sensor. This program change fixed the sensor and it is not reading accurately.
 
-Also, the MET station has been experiencing elevated night-time PAR values. The elevated readings occur intermittently throughout the year, but the frequency was greater in late 2024 and continued into 2025. The cause of the elevated readings is unknown. Sometimes moisture intrusion can cause elevated readings. The wires were chewed on by a critter, so it is possible that moisture is getting inside the sensor cable. On February 20, 2025, the PAR sensor was replaced but unfortunately the sensor replacement has not rectified the elevated night-time readings.
+### PAR Sensor Issues
+Also, the MET station has been experiencing elevated night-time PAR values. The elevated readings occur intermittently throughout the year, but the frequency was greater in late 2024 and continued into 2025. The cause of the elevated readings is unknown. Sometimes moisture intrusion can cause elevated readings. The wires were chewed on by a critter, so it is possible that moisture is getting inside the sensor cable. On February 20, 2025, the PAR sensor was replaced but unfortunately the sensor replacement has not rectified the elevated night-time readings. Furthermore, the sensor started experiencing elevated daytime values beginning on September 18, 2025. PAR data were rejected through the end of the year as a result of the elevated daytime values. 
+
+### Temperature/Relative Humidity Sensor Issues
+Air temperature and relative humidity data collected between September 1, 2025 through November 25, 2025 were rejected and therefore appear as missing in the report. The relative humidity portion of the sensor was not reading accurately. Additionally, on September 12, 2025 the temperature/relative humidity sensor was found outside of the gill shield and laying on the platform. The mesh cap on sensor tip was found dented and the relative humidity data does not match the Kestrel during the data check.
+
+### Sensor Replacements
+On November 25, 2025 the temperature/relative humidity, wind monitor, precipitation gauge, and barometric pressure (card only) sensors were all replaced with new and/or newly calibrated sensors.
+
